@@ -1,0 +1,71 @@
+<footer class="bg-transparent">
+    <div class="container mx-auto px-8">
+        <div class="w-full flex flex-col md:flex-row py-6">
+            <div class="flex-1 mb-6 text-black">
+                <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                    <%= bot.user.username %>
+                </a>
+            </div>
+            <div class="flex-1">
+                <p class="uppercase text-white md:mb-6">Links</p>
+                <ul class="list-reset mb-6">
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="/invite" class="no-underline hover:underline text-fx hover:text-gray-400">Invite</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="/commands"
+                            class="no-underline hover:underline text-fx hover:text-gray-400">Commands</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="/vote" class="no-underline hover:underline text-fx hover:text-gray-400">Vote</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-1">
+                <p class="uppercase text-white md:mb-6">Social</p>
+                <ul class="list-reset mb-6">
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="/discord" class="no-underline hover:underline text-fx hover:text-gray-400">Discord</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/scripts/jquery.min.js"></script>
+<script>
+    const navMenuDiv = document.getElementById("nav-content");
+    const navMenu = document.getElementById("nav-toggle");
+
+    document.onclick = check;
+
+    function check(e) {
+        const target = (e && e.target) || (event && event.srcElement);
+
+        if (!checkParent(target, navMenuDiv)) {
+            if (checkParent(target, navMenu)) {
+                if (navMenuDiv.classList.contains("hidden")) {
+                    navMenuDiv.classList.remove("hidden");
+                } else {
+                    navMenuDiv.classList.add("hidden");
+                }
+            } else {
+                navMenuDiv.classList.add("hidden");
+            }
+        }
+    }
+
+    function checkParent(t, elm) {
+        while (t.parentNode) {
+
+            if (t == elm) {
+                return true;
+            }
+
+            t = t.parentNode;
+        }
+
+        return false;
+    }
+</script>

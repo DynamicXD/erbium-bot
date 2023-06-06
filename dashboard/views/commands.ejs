@@ -1,0 +1,44 @@
+<%- include("include/head.ejs") %>
+
+<body class="leading-normal tracking-normal text-white gradient">
+    <%- include("include/nav.ejs") %>
+
+    <section class="bg-white border-b py-8 mt-10">
+        <% const cats = [...new Set(bot.commands.commands.map(m => m.category))] %>
+        <% cats.forEach(cat => { %>
+            <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+                <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                    <%= cat %>
+                </h1>
+                <div class="w-full mb-4">
+                    <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+                </div>
+    
+                <% bot.commands.commands.filter(c => c.category === cat).forEach(cmd => {%>
+                    <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink cursor-pointer commandbox">
+                        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                            <div class="w-full font-bold text-xl text-gray-800 px-6">
+                                <%= cmd.help.name %>
+                            </div>
+                            <p class="text-gray-800 text-base px-6 mb-5">
+                                <%= cmd.help.description || "No description available" %>
+                            </p>
+                            <p class="text-gray-800 text-base px-6 mb-3">
+                                <b>Aliases:</b> <span class="cmdalias"><%= cmd.help.aliases.join(", ") || "None" %></span>
+                                <br/>
+                                <b>Cooldown:</b> <span><%= cmd.cooldown || 0 %>ms</span>
+                                <br/>
+                                <b>Permissions:</b> <span><%= cmd.help.permissions.join(", ") || "None" %></span>
+                            </p>
+                        </div>
+                    </div>
+                <%}) %>
+    
+            </div>
+        <% }) %>
+    </section>
+
+    <%- include("include/wave.ejs") %>
+    <%- include("include/footer.ejs") %>
+</body>
+</html>
