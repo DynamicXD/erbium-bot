@@ -3,7 +3,7 @@ Erbium is a multipurpose discord bot.
 
 > Note: Erbium is an example bot made just for fun
 
-![logo](https://raw.githubusercontent.com/DynamicXD/erbium-bot/main/assets/ersm.png)
+![logo](https://github.com/DynamicXD/erbium-bot/blob/main/assets/ersm.png)
 
 # Status
 Under Development 🚧
